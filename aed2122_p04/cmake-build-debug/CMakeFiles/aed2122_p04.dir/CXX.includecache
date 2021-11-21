@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/jigs2/CLionProjects/aed2122_p04/Tests/funSortProblem.cpp
+funSortProblem.h
+C:/Users/jigs2/CLionProjects/aed2122_p04/Tests/funSortProblem.h
+algorithm
+-
+
+C:/Users/jigs2/CLionProjects/aed2122_p04/Tests/funSortProblem.h
+iostream
+-
+vector
+-
+product.h
+C:/Users/jigs2/CLionProjects/aed2122_p04/Tests/product.h
+piece.h
+C:/Users/jigs2/CLionProjects/aed2122_p04/Tests/piece.h
+
+C:/Users/jigs2/CLionProjects/aed2122_p04/Tests/piece.h
+string
+-
+
+C:/Users/jigs2/CLionProjects/aed2122_p04/Tests/product.h
+string
+-
+

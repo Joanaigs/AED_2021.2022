@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/jigs2/CLionProjects/aed2122_p01/Tests/parque.cpp
+parque.h
+C:/Users/jigs2/CLionProjects/aed2122_p01/Tests/parque.h
+vector
+-
+
+C:/Users/jigs2/CLionProjects/aed2122_p01/Tests/parque.h
+iostream
+-
+string
+-
+vector
+-
+
