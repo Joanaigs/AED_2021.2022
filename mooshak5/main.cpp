@@ -17,8 +17,8 @@ bool compare(const Frequencia& first, const Frequencia& second){
 int main() {
 
     list<Frequencia> adn;
-    string in="JSHYNSHQSHDGNSHNSJAHSSA";
-    //cin>>in;
+    string in;
+    cin>>in;
 
     for(int i=0; i<in.length();i++){
         list<Frequencia>::iterator it;
