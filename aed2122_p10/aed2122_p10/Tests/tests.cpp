@@ -131,6 +131,15 @@ TEST(test4, disjointSets) {
     for (int i=1; i<limit/2; i++) s4.unite(i-1,i);
     for (int i=limit-1; i>limit/2; i--) s4.unite(i-1,i);
 
+    for (int i=0; i<ops; i++) {
+        EXPECT_EQ(s4.find(i), s4.find(limit/2-1-i));
+        EXPECT_EQ(s4.find(i), s4.find(i+1));
+        EXPECT_EQ(s4.find(limit/2-1-i), s4.find(limit/2-2-i));
+        EXPECT_EQ(s4.find(limit/2+i), s4.find(limit-1-i));
+        EXPECT_EQ(s4.find(limit/2+i), s4.find(limit/2+i+1));
+        EXPECT_EQ(s4.find(limit-1-i), s4.find(limit-2-i));
+        EXPECT_NE(s4.find(i), s4.find(limit/2+i));
+    }
 
 }
 

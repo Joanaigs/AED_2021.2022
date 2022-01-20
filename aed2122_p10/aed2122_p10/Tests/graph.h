@@ -38,6 +38,8 @@ public:
     // ----- Functions to implement in this class -----
     int prim(int v);
     int kruskal();
+
+    static bool sort_func(Edge e1, Edge e2);
 };
 
 #endif

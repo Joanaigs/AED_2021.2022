@@ -1,6 +1,7 @@
 // AED 2021/2022 - Aula Pratica 10
 // Pedro Ribeiro (DCC/FCUP) [09/01/2022]
 
+#include <algorithm>
 #include "graph.h"
 
 // Constructor: nr nodes and direction (default: undirected)
@@ -48,6 +49,28 @@ int Graph::prim(int r) {
 // Exercicio 5: Algoritmo de Kruskal
 // ----------------------------------------------------------
 // TODO
+
 int Graph::kruskal() {
-    return 0;
+    struct E {
+        int origin;
+        int dest;   // Destination node
+        int weight; // An integer weight
+    };
+    DisjointSets<int> s;
+    int t=0;
+    vector<E> edges;
+    for(int i=1; i<=n; i++) {
+        s.makeSet(i);
+        for(auto edge:nodes[i].adj){
+            edges.push_back({i, edge.dest, edge.weight});
+        }
+    }
+    sort(edges.begin(), edges.end(), [](E e1, E e2){ return e1.weight<e2.weight;});
+    for(auto edge:edges){
+        if(s.find(edge.origin)!=s.find(edge.dest)){
+            t+=edge.weight;
+            s.unite(edge.origin, edge.dest);
+        }
+    }
+    return t;
 }

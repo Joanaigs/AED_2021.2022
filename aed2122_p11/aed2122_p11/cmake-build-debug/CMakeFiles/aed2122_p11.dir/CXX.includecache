@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/jigs2/CLionProjects/AED_2021.2022/aed2122_p11/aed2122_p11/Tests/graph.cpp
+graph.h
+C:/Users/jigs2/CLionProjects/AED_2021.2022/aed2122_p11/aed2122_p11/Tests/graph.h
+climits
+-
+
+C:/Users/jigs2/CLionProjects/AED_2021.2022/aed2122_p11/aed2122_p11/Tests/graph.h
+minHeap.h
+C:/Users/jigs2/CLionProjects/AED_2021.2022/aed2122_p11/aed2122_p11/Tests/minHeap.h
+vector
+-
+list
+-
+iostream
+-
+
+C:/Users/jigs2/CLionProjects/AED_2021.2022/aed2122_p11/aed2122_p11/Tests/minHeap.h
+vector
+-
+unordered_map
+-
+
