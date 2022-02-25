@@ -26,6 +26,7 @@ public:
 template <class T>
 void DisjointSets<T>::makeSet(const T& x) {
     a[x].parent = x;
+    a[x].myrank=0;
 }
 
 // Find the representative of the set of element x
@@ -51,6 +52,7 @@ void DisjointSets<T>::unite(const T& x, const T& y) {
         a.at(yRoot).parent=xRoot;
         a.at(xRoot).myrank+=1;
     }
+
 }
 
 #endif

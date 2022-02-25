@@ -3,8 +3,6 @@
 
 #include "funWithGraphs.h"
 #include "graph.h"
-#include "minHeap.h"
-#include <math.h>
 
 #include <vector>
 #include <iostream>
@@ -91,28 +89,32 @@ Graph FunWithGraphs::graph4() {
 // ----------------------------------------------------------
 // Exercicio 2: Heaps Binários
 // ----------------------------------------------------------
-int countDigits(int num){
-    int count=0;
-    while(num>0){
-        count+=num%10;
-        num/=10;
-    }
-    return count;
-}
+
 // ..............................
 // a) Um pequeno jogo
 // TODO
+
+int FunWithGraphs::sumOfDigits(int n){
+    int sum=0;
+    while(n>0){
+        sum+=n%10;
+        n=n/10;
+    }
+    return sum;
+}
+
 int FunWithGraphs::game(const vector<int>& v) {
-     MinHeap<int, int> minHeap(v.size(), -1);
-     for(int i=0; i<v.size(); i++)
-         minHeap.insert(v[i], countDigits(v[i]));
-     while(minHeap.getSize()>1){
-         int n1=minHeap.removeMin();
-         int n2=minHeap.removeMin();
-         int sub=abs(n1-n2);
-         minHeap.insert(sub, countDigits(sub));
+     MinHeap<int, int> h(v.size(), -1);
+     for(auto n:v){
+         h.insert(n, sumOfDigits(n));
      }
-     return minHeap.removeMin();
+     while(h.getSize()>1){
+         int n1=h.removeMin();
+         int n2=h.removeMin();
+         int n=abs(n1-n2);
+         h.insert(n, sumOfDigits(n));
+     }
+     return h.removeMin();
 }
 
 // ----------------------------------------------------------
@@ -120,6 +122,20 @@ int FunWithGraphs::game(const vector<int>& v) {
 // ----------------------------------------------------------
 // TODO
 int FunWithGraphs::gridCity(const vector<pair<int, int>>& plants, const vector<pair<int, int>>& houses) {
-    return 0;
+    Graph g(plants.size()+houses.size());
+    vector<int>pl;
+    for(int j = 0; j < plants.size(); j++)
+        pl.push_back(houses.size() + j + 1);
+    for(int i=0; i<houses.size(); i++) {
+        for (int j = 0; j < plants.size(); j++) {
+            int weight = abs(houses[i].first - plants[j].first) + abs(houses[i].second - plants[j].second);
+            g.addEdge(i + 1, houses.size() + j + 1, weight);
+        }
+        for (int j = i+1; j < houses.size(); j++) {
+            int weight = abs(houses[i].first - houses[j].first) + abs(houses[i].second - houses[j].second);
+            g.addEdge(i + 1, j + 1, weight);
+        }
+    }
+    return g.primFun(pl);
 }
 

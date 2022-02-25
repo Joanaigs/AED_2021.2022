@@ -22,34 +22,61 @@ void Graph::addEdge(int src, int dest, int weight) {
 // TODO
 int Graph::prim(int r) {
     int sum=0;
-    for(int v=1; v<=n; v++){
-        nodes[v].distance=INT_MAX;
-        nodes[v].parent=NULL;
+    MinHeap<int, int> q(n, -1);
+    for(int i=1; i<=n; i++){
+        nodes[i].distance=INT_MAX/2;
+        nodes[i].parent=NULL;
+        q.insert(i, nodes[i].distance);
     }
     nodes[r].distance=0;
-    MinHeap<int, int> q(n, -1);
-    for(int i=1; i<=n; i++)
-        q.insert(i, nodes[i].distance);
-    while(q.getSize()!=0){
+    q.decreaseKey(r, 0);
+    while(q.getSize()>0){
         int u=q.removeMin();
-        sum+=nodes[u].distance;
-        for(auto v:nodes[u].adj){
-            if(q.hasKey(v.dest) && v.weight<nodes[v.dest].distance){
-                q.decreaseKey(v.dest, v.weight);
-                nodes[v.dest].parent=u;
-                nodes[v.dest].distance=v.weight;
+        for(auto e:nodes[u].adj){
+            int v=e.dest;
+            if(q.hasKey(v) && e.weight<nodes[v].distance){
+                nodes[v].parent=u;
+                nodes[v].distance=e.weight;
+                q.decreaseKey(v, e.weight);
             }
         }
     }
+    for(auto const & node : nodes)
+        sum += node.distance;
     return sum;
 }
 
-
+int Graph::primFun(vector<int> plantas) {
+    int sum=0;
+    MinHeap<int, int> q(n, -1);
+    for(int i=1; i<=n; i++){
+        nodes[i].distance=INT_MAX/2;
+        nodes[i].parent=NULL;
+        q.insert(i, nodes[i].distance);
+    }
+    for(auto i:plantas){
+        nodes[i].distance=0;
+        q.decreaseKey(i, 0);
+    }
+    while(q.getSize()>0){
+        int u=q.removeMin();
+        for(auto e:nodes[u].adj){
+            int v=e.dest;
+            if(q.hasKey(v) && e.weight<nodes[v].distance){
+                nodes[v].parent=u;
+                nodes[v].distance=e.weight;
+                q.decreaseKey(v, e.weight);
+            }
+        }
+    }
+    for(auto const & node : nodes)
+       sum += node.distance;
+    return sum;
+}
 // ----------------------------------------------------------
 // Exercicio 5: Algoritmo de Kruskal
 // ----------------------------------------------------------
 // TODO
-
 int Graph::kruskal() {
     struct E {
         int origin;

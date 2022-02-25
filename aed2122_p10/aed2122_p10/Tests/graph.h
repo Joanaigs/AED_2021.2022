@@ -19,9 +19,11 @@ class Graph {
     };
 
     struct Node {
-        list<Edge> adj;
+        list<Edge> adj; // The list of outgoing edges (to adjacent nodes)
         int distance;
         int parent;
+        int x;
+        int y;
     };
 
     int n;              // Graph size (vertices are numbered from 1 to n)
@@ -39,7 +41,7 @@ public:
     int prim(int v);
     int kruskal();
 
-    static bool sort_func(Edge e1, Edge e2);
+    int primFun(vector<int> plantas);
 };
 
 #endif

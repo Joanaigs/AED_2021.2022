@@ -22,6 +22,8 @@ public:
     // ----- Functions to implement in this class -----
     static int game(const vector<int>& v);
     static int gridCity(const vector<pair<int, int>>& plants, const vector<pair<int, int>>& houses);
+
+    static int sumOfDigits(int n);
 };
 
 #endif
